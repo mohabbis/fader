@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "Fader/**"
+      - "Sources/**"
+      - "Resources/**"
+      - "scripts/**"
+      - "Package.swift"
+      - ".github/workflows/release.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Fader.app
+        run: scripts/build-app.sh
+
+      - name: Check the zip
+        run: |
+          unzip -l build/Fader.zip | grep -q "Fader.app/Contents/MacOS/Fader"
+          unzip -l build/Fader.zip | grep -q "Fader.app/Contents/Info.plist"
+
+      - name: Publish Fader.zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes=$(cat <<'EOF'
+          Menu-bar volume and output splitter for macOS 14.2 or later.
+
+          Unzip Fader.app, move it to /Applications, and open it. If macOS says the app cannot be opened, go to System Settings → Privacy & Security and choose Open Anyway. Then allow System Audio Recording.
+          EOF
+          )
+          if gh release view v0.1.0 >/dev/null 2>&1; then
+            gh release upload v0.1.0 build/Fader.zip --clobber
+            gh release edit v0.1.0 --latest --notes "$notes"
+          else
+            gh release create v0.1.0 build/Fader.zip \
+              --title "Fader 0.1.0" \
+              --latest \
+              --notes "$notes"
+          fi

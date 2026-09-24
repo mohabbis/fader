@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fader — Per-app volume and speakers for your Mac</title>
+<meta name="description" content="Fader is a menu-bar audio splitter for macOS. Give every playing app its own volume, mute, and output device.">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Fader — Per-app volume and speakers for your Mac">
+<meta property="og:description" content="Spotify on your headphones. The browser on your speakers. Each with its own volume.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312161c'/%3E%3Crect x='16' y='30' width='6' height='18' rx='2' fill='%23e39a52'/%3E%3Crect x='29' y='16' width='6' height='32' rx='2' fill='%23e39a52'/%3E%3Crect x='42' y='24' width='6' height='24' rx='2' fill='%23e39a52'/%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #12161c;
+    --bg-alt: #181c24;
+    --surface: #1c212b;
+    --text: #f3f0e8;
+    --muted: #a39e94;
+    --faint: #7d786f;
+    --line: #2a3140;
+    --copper: #e39a52;
+    --copper-deep: #c4783a;
+    --danger: #e26c5d;
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+      --bg: #f6f3ec;
+      --bg-alt: #efeae1;
+      --surface: #fffdf8;
+      --text: #1c1915;
+      --muted: #6f6a62;
+      --faint: #8d877e;
+      --line: #e4ddd2;
+      --copper: #c56a28;
+      --copper-deep: #9e4e12;
+      --danger: #b0382e;
+      --shadow: 0 18px 40px rgba(60, 40, 20, 0.12);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  }
+  a { color: var(--copper); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0 8px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 650; }
+  .brand:hover { text-decoration: none; }
+  nav { display: flex; gap: 18px; align-items: center; }
+  nav a { color: var(--muted); font-size: 15px; }
+  .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; padding: 54px 0 72px; }
+  h1 { font-size: clamp(40px, 6vw, 68px); line-height: 0.98; letter-spacing: -0.045em; margin: 0 0 18px; font-weight: 680; }
+  .lede { font-size: 20px; color: var(--muted); margin: 0 0 28px; max-width: 34rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 999px; padding: 12px 18px; font-weight: 650; font-size: 16px;
+  }
+  .btn:hover { text-decoration: none; }
+  .btn-primary { background: var(--copper); color: #1a120c; }
+  .btn-primary:hover { background: var(--copper-deep); color: #1a120c; }
+  .btn-secondary { border: 1px solid var(--line); color: var(--text); }
+  .fine { color: var(--faint); font-size: 14px; margin: 14px 0 0; }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 16px;
+  }
+  .panel-top, .row-top, .master, .fader-line { display: flex; align-items: center; }
+  .panel-top { justify-content: space-between; margin-bottom: 14px; }
+  .mark { display: flex; align-items: flex-end; gap: 3px; height: 16px; }
+  .mark span { width: 3px; border-radius: 2px; background: var(--copper); display: block; }
+  .name { font-weight: 650; }
+  .pill { font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 4px 8px; }
+  .master, .app {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 8px;
+  }
+  .master { display: block; }
+  .label { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+  .track { height: 4px; background: var(--line); border-radius: 99px; position: relative; }
+  .track i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--copper); border-radius: 99px; }
+  .track b {
+    position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--surface); border: 2px solid var(--copper); transform: translate(-50%, -50%);
+  }
+  .row-top { gap: 10px; }
+  .glyph {
+    width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center;
+    background: var(--line); font-size: 12px; font-weight: 700; flex: none;
+  }
+  .titles { min-width: 0; flex: 1; }
+  .titles strong, .titles em { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .titles em { font-style: normal; color: var(--faint); font-size: 12px; margin-top: 2px; }
+  .fader-line { gap: 8px; margin-top: 10px; }
+  .mute {
+    width: 28px; height: 28px; border-radius: 7px; background: var(--line); color: var(--muted);
+    display: grid; place-items: center; font-size: 12px; flex: none;
+  }
+  .fader-line .track { flex: 1; }
+  .pct { width: 36px; text-align: right; color: var(--faint); font-size: 12px; font-variant-numeric: tabular-nums; }
+  section { padding: 28px 0 72px; }
+  h2 { font-size: 32px; letter-spacing: -0.03em; margin: 0 0 8px; }
+  .section-lede { color: var(--muted); margin: 0 0 22px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .steps { margin: 0; padding-left: 18px; color: var(--muted); }
+  .steps li { margin: 8px 0; }
+  .steps strong { color: var(--text); font-weight: 620; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; color: var(--text); }
+  footer { border-top: 1px solid var(--line); padding: 22px 0 36px; color: var(--faint); font-size: 14px; }
+  @media (max-width: 800px) {
+    .hero, .grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 28px; }
+    nav .quiet { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="/">
+        <span class="mark" aria-hidden="true"><span style="height:8px"></span><span style="height:14px"></span><span style="height:10px"></span></span>
+        Fader
+      </a>
+      <nav>
+        <a class="quiet" href="#install">Install</a>
+        <a href="https://github.com/mohabbis/fader">Source</a>
+        <a class="btn btn-primary" href="/download">Download</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <div>
+        <h1>Every app, its own volume and speakers.</h1>
+        <p class="lede">Fader is a menu-bar splitter for your Mac. Spotify can stay on your headphones while the browser plays through the speakers, each with its own volume.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="/download">Download for Mac</a>
+          <a class="btn btn-secondary" href="https://github.com/mohabbis/fader">View source</a>
+        </div>
+        <p class="fine">macOS 14.2 or later. Free and open source. No account.</p>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <div class="panel-top">
+          <span class="name">Fader</span>
+          <span class="pill">Open mixer</span>
+        </div>
+        <div class="master">
+          <div class="label"><span>Master</span><span>80%</span></div>
+          <div class="track"><i style="width:80%"></i><b style="left:80%"></b></div>
+        </div>
+        <div class="app">
+          <div class="row-top">
+            <div class="glyph">S</div>
+            <div class="titles"><strong>Spotify</strong><em>AirPods</em></div>
+          </div>
+          <div class="fader-line"><span class="mute">♪</span><div class="track"><i style="width:62%"></i><b style="left:62%"></b></div><span class="pct">62%</span></div>
+        </div>
+        <div class="app">
+          <div class="row-top">
+            <div class="glyph">S</div>
+            <div class="titles"><strong>Safari</strong><em>MacBook Speakers</em></div>
+          </div>
+          <div class="fader-line"><span class="mute">♪</span><div class="track"><i style="width:35%"></i><b style="left:35%"></b></div><span class="pct">35%</span></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>A daily splitter</h2>
+      <p class="section-lede">Only apps that are playing show up. Fader remembers the choices.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Separate volumes</h3>
+          <p>Each app has a fader and a mute. The master volume sits above them.</p>
+        </article>
+        <article class="card">
+          <h3>Separate outputs</h3>
+          <p>Send one app to headphones and another to the speakers. New apps follow the system output until you pick a device.</p>
+        </article>
+        <article class="card">
+          <h3>Headphones unplugged</h3>
+          <p>That app keeps its saved device and plays through the current system output until the headphones come back.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2>Install</h2>
+      <ol class="steps">
+        <li><a href="/download">Download Fader.zip</a> and unzip it.</li>
+        <li>Move <strong>Fader</strong> to Applications and open it. There is no Dock icon. The sliders live in the menu bar.</li>
+        <li>If macOS says the app cannot be opened, choose <strong>Open Anyway</strong> in System Settings → Privacy &amp; Security. You can also run <code>xattr -dr com.apple.quarantine /Applications/Fader.app</code></li>
+        <li>Allow <strong>System Audio Recording</strong> when macOS asks. Play something, then set that app’s volume and output.</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>Fader 0.1.0 · MIT · Quitting Fader hands audio back to the system output.</footer>
+  </div>
+</body>
+</html>

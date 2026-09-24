@@ -15,7 +15,11 @@ It runs on macOS 14.2 and later. Fader captures each app with a Core Audio proce
 
 Input routing and keyboard shortcuts are not in this version.
 
-## Install
+## Download
+
+The site is [fader.muharafiq.vercel.app](https://fader.muharafiq.vercel.app). Download the built app from [Fader.zip](https://github.com/mohabbis/fader/releases/latest/download/Fader.zip), unzip it, and move `Fader.app` to `/Applications`.
+
+## Install from source
 
 macOS 14.2 or later. You need the Xcode Command Line Tools, not the Xcode window. If `swift` is missing, run `xcode-select --install` once.
 
