@@ -1,3 +1,4 @@
+#if os(macOS)
 import SwiftUI
 
 @main
@@ -21,3 +22,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         engine.stop()
     }
 }
+
+#endif
+
+
+#if !os(macOS)
+@main
+enum FaderMain {
+    static func main() {
+        print("Fader runs on macOS 14.2 or later.")
+    }
+}
+#endif

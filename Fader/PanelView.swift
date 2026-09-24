@@ -1,3 +1,4 @@
+#if os(macOS)
 import AppKit
 import SwiftUI
 
@@ -319,3 +320,5 @@ enum MixerWindow {
         NSApp.activate(ignoringOtherApps: true)
     }
 }
+
+#endif

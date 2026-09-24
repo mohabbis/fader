@@ -1,3 +1,4 @@
+#if os(macOS)
 import AudioToolbox
 import CoreAudio
 import Foundation
@@ -216,3 +217,5 @@ final class MixGraph: @unchecked Sendable {
         return count
     }
 }
+
+#endif

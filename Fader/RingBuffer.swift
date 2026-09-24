@@ -1,3 +1,4 @@
+#if os(macOS)
 import Foundation
 
 /// Stereo float ring used between a process tap and an output device.
@@ -96,3 +97,5 @@ final class StereoRing: @unchecked Sendable {
         storage[(frame & mask) * 2 + channel]
     }
 }
+
+#endif

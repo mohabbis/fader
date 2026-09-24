@@ -1,3 +1,4 @@
+#if os(macOS)
 import AudioToolbox
 import CoreAudio
 import Foundation
@@ -191,3 +192,5 @@ final class ProcessCapture: @unchecked Sendable {
 
     deinit { stop() }
 }
+
+#endif

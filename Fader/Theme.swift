@@ -1,3 +1,4 @@
+#if os(macOS)
 import SwiftUI
 
 struct Palette {
@@ -86,3 +87,5 @@ struct FaderSlider: View {
         .frame(height: 22)
     }
 }
+
+#endif

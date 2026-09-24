@@ -1,7 +1,9 @@
+#if os(macOS)
 import AppKit
 import Combine
 import CoreAudio
 import Foundation
+import FaderCore
 import os
 
 struct OutputDevice: Identifiable, Equatable {
@@ -289,3 +291,5 @@ final class AudioEngine: ObservableObject {
         return icon
     }
 }
+
+#endif

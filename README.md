@@ -15,12 +15,25 @@ It runs on macOS 14.2 and later. Fader captures each app with a Core Audio proce
 
 Input routing and keyboard shortcuts are not in this version.
 
-## Run it
+## Install
 
-1. Open `Fader.xcodeproj` in Xcode 15 or later on macOS 14.2+.
-2. Run the Fader scheme.
-3. When macOS asks, allow System Audio Recording.
-4. Play audio in another app. It shows up in the menu-bar panel.
+macOS 14.2 or later. You need the Xcode Command Line Tools, not the Xcode window. If `swift` is missing, run `xcode-select --install` once.
+
+```sh
+git clone https://github.com/mohabbis/fader.git
+cd fader
+scripts/build-app.sh
+open build/Fader.app
+```
+
+To keep it after you close Terminal:
+
+```sh
+cp -R build/Fader.app /Applications/
+open /Applications/Fader.app
+```
+
+When macOS asks, allow System Audio Recording. Play audio in another app and it shows up in the menu-bar panel.
 
 Click **Open mixer** if you want the panel to stay on screen.
 

@@ -1,3 +1,4 @@
+#if os(macOS)
 import CoreAudio
 import Foundation
 
@@ -171,3 +172,5 @@ enum AudioHAL {
         }
     }
 }
+
+#endif
