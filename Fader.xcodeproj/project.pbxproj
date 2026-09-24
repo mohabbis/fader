@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42FFB59E499999C1D9807AA6 /* AppGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38588341BF8D89904A1ADB60 /* AppGrouping.swift */; };
+		FBBB26DE25687D46232C8CB4 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E2D9695BE3E7ED5F4C60CB /* Models.swift */; };
+		E6531E36C3910CC2A4882A85 /* Presence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39A01062A9862B66FB4F8D /* Presence.swift */; };
+		E6A75BCB642CADFA10FC6738 /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0DC3264DFEC4405CA2F4AA /* RouteStore.swift */; };
+		4916A6005AD486FE87226435 /* RoutingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070094CB6A60F0EFEDD236E /* RoutingPolicy.swift */; };
+		8D77ACF7159389DAE609CCB9 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB646DCBEB75E6357A44AF /* AudioEngine.swift */; };
+		66101318B9FEC277E758025E /* AudioHAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9A3F77C142F4582392911 /* AudioHAL.swift */; };
+		2393CDCC94D678D3414697F3 /* DeviceOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AE8F0386E5AF023C910B36 /* DeviceOutput.swift */; };
+		159FFB71FF63122E24F5930C /* FaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C42E09D6009785B20EA34 /* FaderApp.swift */; };
+		567D967BD5D3EBD134205D13 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC7A92FDCE58964D59B23 /* PanelView.swift */; };
+		5CA06C1C5E412AEBEE1BC757 /* ProcessCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B41B1D75B7CEE12697EDB /* ProcessCapture.swift */; };
+		DA217CF52789F08DE198D7EA /* RingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7703EFB4C82CA044698DDA86 /* RingBuffer.swift */; };
+		E07A96D77BB62F0B7BCF6254 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B900F1EAEDFB4CD4AADBAE /* Theme.swift */; };
+		DB249DB9D0FF833647E29581 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F9973165E2B0FD4A3AAC566 /* Assets.xcassets */; };
+		A3379FBDCEDC6CF0D9EEB4C8 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA75EC7466588481356653B /* CoreAudio.framework */; };
+		E8A53F3C256057BC33EB7352 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5098004A1A9A45CECDEB1765 /* AudioToolbox.framework */; };
+		53FA6888EC2ED650BD4B5A78 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5189052E36064DD445232B /* Cocoa.framework */; };
+		DFD39149A0E5B89D8F1A321A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3016F92D46D1CC3FB1C398 /* SwiftUI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		38588341BF8D89904A1ADB60 /* AppGrouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGrouping.swift; sourceTree = "<group>"; };
+		07E2D9695BE3E7ED5F4C60CB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		1C39A01062A9862B66FB4F8D /* Presence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presence.swift; sourceTree = "<group>"; };
+		0C0DC3264DFEC4405CA2F4AA /* RouteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStore.swift; sourceTree = "<group>"; };
+		6070094CB6A60F0EFEDD236E /* RoutingPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingPolicy.swift; sourceTree = "<group>"; };
+		A1AB646DCBEB75E6357A44AF /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
+		79E9A3F77C142F4582392911 /* AudioHAL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHAL.swift; sourceTree = "<group>"; };
+		92AE8F0386E5AF023C910B36 /* DeviceOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOutput.swift; sourceTree = "<group>"; };
+		F88C42E09D6009785B20EA34 /* FaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaderApp.swift; sourceTree = "<group>"; };
+		728EC7A92FDCE58964D59B23 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		816B41B1D75B7CEE12697EDB /* ProcessCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessCapture.swift; sourceTree = "<group>"; };
+		7703EFB4C82CA044698DDA86 /* RingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingBuffer.swift; sourceTree = "<group>"; };
+		B3B900F1EAEDFB4CD4AADBAE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		6F9973165E2B0FD4A3AAC566 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB1A44531810F64AA931039F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5BF48AA40CAD7891EB709FC /* Fader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA75EC7466588481356653B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		5098004A1A9A45CECDEB1765 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0B5189052E36064DD445232B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6B3016F92D46D1CC3FB1C398 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE1439ACCFCEB73E6F9981A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3379FBDCEDC6CF0D9EEB4C8 /* CoreAudio.framework in Frameworks */,
+				E8A53F3C256057BC33EB7352 /* AudioToolbox.framework in Frameworks */,
+				53FA6888EC2ED650BD4B5A78 /* Cocoa.framework in Frameworks */,
+				DFD39149A0E5B89D8F1A321A /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DA3EB179D6EE613492F299B1 /* FaderCore */ = {
+			isa = PBXGroup;
+			children = (
+				38588341BF8D89904A1ADB60 /* AppGrouping.swift */,
+				07E2D9695BE3E7ED5F4C60CB /* Models.swift */,
+				1C39A01062A9862B66FB4F8D /* Presence.swift */,
+				0C0DC3264DFEC4405CA2F4AA /* RouteStore.swift */,
+				6070094CB6A60F0EFEDD236E /* RoutingPolicy.swift */,
+			);
+			path = FaderCore;
+			sourceTree = "<group>";
+		};
+		1507F349832A04790D3C1273 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DA3EB179D6EE613492F299B1 /* FaderCore */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		450397762C401FBB4AF3F380 /* Fader */ = {
+			isa = PBXGroup;
+			children = (
+				A1AB646DCBEB75E6357A44AF /* AudioEngine.swift */,
+				79E9A3F77C142F4582392911 /* AudioHAL.swift */,
+				92AE8F0386E5AF023C910B36 /* DeviceOutput.swift */,
+				F88C42E09D6009785B20EA34 /* FaderApp.swift */,
+				728EC7A92FDCE58964D59B23 /* PanelView.swift */,
+				816B41B1D75B7CEE12697EDB /* ProcessCapture.swift */,
+				7703EFB4C82CA044698DDA86 /* RingBuffer.swift */,
+				B3B900F1EAEDFB4CD4AADBAE /* Theme.swift */,
+				6F9973165E2B0FD4A3AAC566 /* Assets.xcassets */,
+				AB1A44531810F64AA931039F /* Info.plist */,
+			);
+			path = Fader;
+			sourceTree = "<group>";
+		};
+		547D009064F7C3F13BEF3460 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5BF48AA40CAD7891EB709FC /* Fader.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		518DA81DB9B99529C0C0AEBE = {
+			isa = PBXGroup;
+			children = (
+				450397762C401FBB4AF3F380 /* Fader */,
+				1507F349832A04790D3C1273 /* Sources */,
+				547D009064F7C3F13BEF3460 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42AEFBAE01D2DFD981F7DA7D /* Fader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CF598ACC897FE8648893EB5 /* Build configuration list for PBXNativeTarget "Fader" */;
+			buildPhases = (
+				F2AB5FB218DA8B84623F4557 /* Sources */,
+				DE1439ACCFCEB73E6F9981A5 /* Frameworks */,
+				55B558C7EF820E6E00E5993B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fader;
+			productName = Fader;
+			productReference = F5BF48AA40CAD7891EB709FC /* Fader.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					42AEFBAE01D2DFD981F7DA7D = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = AD8DC1A475C1871509FE9877 /* Build configuration list for PBXProject "Fader" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 518DA81DB9B99529C0C0AEBE;
+			productRefGroup = 547D009064F7C3F13BEF3460 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42AEFBAE01D2DFD981F7DA7D /* Fader */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55B558C7EF820E6E00E5993B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB249DB9D0FF833647E29581 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2AB5FB218DA8B84623F4557 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42FFB59E499999C1D9807AA6 /* AppGrouping.swift in Sources */,
+				FBBB26DE25687D46232C8CB4 /* Models.swift in Sources */,
+				E6531E36C3910CC2A4882A85 /* Presence.swift in Sources */,
+				E6A75BCB642CADFA10FC6738 /* RouteStore.swift in Sources */,
+				4916A6005AD486FE87226435 /* RoutingPolicy.swift in Sources */,
+				8D77ACF7159389DAE609CCB9 /* AudioEngine.swift in Sources */,
+				66101318B9FEC277E758025E /* AudioHAL.swift in Sources */,
+				2393CDCC94D678D3414697F3 /* DeviceOutput.swift in Sources */,
+				159FFB71FF63122E24F5930C /* FaderApp.swift in Sources */,
+				567D967BD5D3EBD134205D13 /* PanelView.swift in Sources */,
+				5CA06C1C5E412AEBEE1BC757 /* ProcessCapture.swift in Sources */,
+				DA217CF52789F08DE198D7EA /* RingBuffer.swift in Sources */,
+				E07A96D77BB62F0B7BCF6254 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F39F8ABD57B231946350BC7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AE47003453E1B70B11597F7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AE8750D0FC6C1086811EA8B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Fader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mohabbis.fader;
+				PRODUCT_NAME = Fader;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		64E583584DE4779C3E5FBCDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Fader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mohabbis.fader;
+				PRODUCT_NAME = Fader;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD8DC1A475C1871509FE9877 /* Build configuration list for PBXProject "Fader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F39F8ABD57B231946350BC7C /* Debug */,
+				AE47003453E1B70B11597F7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CF598ACC897FE8648893EB5 /* Build configuration list for PBXNativeTarget "Fader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE8750D0FC6C1086811EA8B5 /* Debug */,
+				64E583584DE4779C3E5FBCDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}
