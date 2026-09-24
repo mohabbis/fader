@@ -42,9 +42,13 @@ cp "$ROOT/Resources/Info.plist" "$APP/Contents/Info.plist"
 printf 'APPL????' > "$APP/Contents/PkgInfo"
 
 IDENTITY="${SIGN_IDENTITY:--}"
-echo "==> Signing (identity: $IDENTITY)"
-codesign --force --sign "$IDENTITY" "$APP"
-codesign --verify --strict --verbose=1 "$APP"
+echo "==> Signing"
+if [[ "$IDENTITY" == "-" ]]; then
+  codesign --force --sign - "$APP"
+else
+  codesign --force --options runtime --timestamp --sign "$IDENTITY" "$APP"
+fi
+codesign --verify --strict --verbose=2 "$APP"
 
 ZIP="$ROOT/build/Fader.zip"
 rm -f "$ZIP"
