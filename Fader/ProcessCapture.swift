@@ -107,7 +107,7 @@ final class ProcessCapture: @unchecked Sendable {
     private func consume(_ inputData: UnsafePointer<AudioBufferList>) {
         guard accepting.withLock({ $0 }) else { return }
         let buffers = UnsafeMutableAudioBufferListPointer(UnsafeMutablePointer(mutating: inputData))
-        guard let first = buffers.first, let data = first.mData else { return }
+        guard let first = buffers.first, first.mData != nil else { return }
         let channels = Int(format.mChannelsPerFrame == 0 ? 2 : format.mChannelsPerFrame)
         let bytesPerFrame = Int(format.mBytesPerFrame == 0 ? 8 : format.mBytesPerFrame)
         let frameCount: Int

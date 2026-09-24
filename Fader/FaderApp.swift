@@ -15,6 +15,7 @@ struct FaderApp: App {
     }
 }
 
+@MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     let engine = AudioEngine()
 
