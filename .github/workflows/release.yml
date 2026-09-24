@@ -28,6 +28,11 @@ jobs:
         run: |
           unzip -l build/Fader.zip | grep -q "Fader.app/Contents/MacOS/Fader"
           unzip -l build/Fader.zip | grep -q "Fader.app/Contents/Info.plist"
+          ditto -x -k build/Fader.zip build/unpacked
+          archs="$(lipo -archs build/unpacked/Fader.app/Contents/MacOS/Fader)"
+          echo "architectures: $archs"
+          echo "$archs" | grep -q arm64
+          echo "$archs" | grep -q x86_64
 
       - name: Publish Fader.zip
         env:

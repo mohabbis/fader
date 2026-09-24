@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Builds Fader.app with Swift. No need to open the Xcode project.
 #
-#   scripts/build-app.sh
+#   scripts/build-app.sh             # native architecture
+#   UNIVERSAL=1 scripts/build-app.sh # arm64 + x86_64
 #   open build/Fader.app
 #
 # Needs macOS 14.2+ and the Xcode Command Line Tools (`xcode-select --install`).
@@ -21,9 +22,16 @@ fi
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+export MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-14.2}"
+
+ARCH_FLAGS=()
+if [[ "${UNIVERSAL:-0}" == "1" ]]; then
+  ARCH_FLAGS=(--arch arm64 --arch x86_64)
+fi
+
 echo "==> Building release binary"
-swift build -c release --product Fader
-BIN_DIR="$(swift build -c release --product Fader --show-bin-path)"
+swift build -c release --product Fader ${ARCH_FLAGS[@]+"${ARCH_FLAGS[@]}"}
+BIN_DIR="$(swift build -c release --product Fader ${ARCH_FLAGS[@]+"${ARCH_FLAGS[@]}"} --show-bin-path)"
 
 APP="$ROOT/build/Fader.app"
 echo "==> Assembling $APP"
